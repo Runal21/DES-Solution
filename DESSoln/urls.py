@@ -31,9 +31,9 @@ urlpatterns = [
     path('contact/',contact,name="contact"), #contact page
 
 
-    # path('login/',login,name="login"), #login page
-    # path('register/',register,name="register"), #register page
-    # path('logout/',logout,name="logout"), #login page
+    path('login/',loginpage,name="login"), #login page
+    path('register/',registerpage,name="register"), #register page
+    path('logout/',logoutpage,name="logout"), #login page
 
 
     path('admin/', admin.site.urls),

@@ -12,13 +12,13 @@
         <a href="{%url 'home'%}">Home</a>&nbsp;|&nbsp;
         <a href="{%url 'about'%}">About Us</a>&nbsp;|&nbsp;
         <a href="{%url 'contact'%}">Contact Us</a><br/>
-        
-        {% comment %} {% if user.is_authenticated %}  
-            Hello {{user.username}} | 
+        Hello {{user.username}} | 
+       {% if user.is_authenticated %}  
             <a href="{% url 'logout' %}">Log Out</a>
         {% else %}        
-            <a href="{% url 'login' %}">Login/Register</a>
-        {% endif %} {% endcomment %}
+            <a href="{% url 'login' %}">login</a>
+            <a href="{% url 'register' %}">Register</a>
+        {% endif %}
     </header>    
 {%block main_content%}
 {%endblock %}
