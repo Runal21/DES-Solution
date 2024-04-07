@@ -1,0 +1,29 @@
+{% extends "base.html"%}
+{%block main_content%}
+    <form action="{% url 'register'%}" method="post">
+        {% csrf_token %} 
+        <h3>Register Here</h3>
+
+        <label for="username">Username</label>
+        <input type="text" placeholder="Username" name="username" id="username">
+        <br>
+        <label for="firstname">FirstName</label>
+        <input type="text" placeholder="firstname" name="firstname" id="firstname">
+        <br>
+        <label for="lastname">lastname</label>
+        <input type="text" placeholder="lastname" name="lastname" id="lastname">
+        <br>
+        <label for="email">Email</label>
+        <input type="email" placeholder="Email" name="email" id="email">
+        <br>
+        <label for="location">location</label>
+        <input type="text" placeholder="location" name="location" id="location">
+        <br>
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password" name="password">
+        <br>
+        <button type="submit">Register</button>
+        
+        <a href="{% url 'login' %}" >I have already account</a>
+    </form>
+{% endblock %}
