@@ -1,7 +1,85 @@
 {% extends "index.html"%}
 {%block main_content%}
 {%load static%}
-    <form method="post">
+<style>
+    /* Login form */
+    .login-form {
+      width:80%;
+      max-width: 525px;
+      min-height: 500px;
+      position: relative;
+      padding: 90px 70px 50px 70px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.1), 0 17px 50px 0 rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Login form header */
+    .login-form h3 {
+      font-size: 22px;
+      margin-bottom: 30px;
+      text-align: center;
+      color: #333;
+    }
+    
+    /* Login form label */
+    .login-form label {
+      font-size: 15px;
+      text-transform: uppercase;
+      color: #ccc;
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    /* Login form input */
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+      width: 100%;
+      border: none;
+      border-radius: 25px;
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #333;
+      margin-bottom: 15px;
+    }
+    
+    /* Login form button */
+    .login-form button[type="submit"] {
+      width: 100%;
+      border: none;
+      border-radius: 25px;
+      padding: 15px 20px;
+      background: #ff8248;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .login-form button[type="submit"]:hover {
+      background: #ffcab1;
+    }
+    
+    /* Create account link */
+    .login-form a {
+      font-size: 13px;
+      text-decoration: none;
+      color: #999;
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      transition: color 0.2s;
+    }
+    
+    .login-form a:hover {
+      color: #333;
+    }
+
+</style>
+
+    <form class="login-form" method="post">
         <h3>Login Here</h3>
         {% csrf_token %} 
         <label for="username">Username</label>

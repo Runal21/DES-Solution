@@ -1,7 +1,84 @@
 {% extends "index.html"%}
 {%block main_content%}
 {%load static%}
-    <form action="{% url 'register'%}" method="post">
+<style>
+    /* Register form */
+.register-form {
+  width: 100%;
+  max-width: 525px;
+  min-height: 670px;
+  position: relative;
+  padding: 90px 70px 50px 70px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.1), 0 17px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Register form header */
+.register-form h3 {
+  font-size: 22px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #333;
+}
+
+/* Register form label */
+.register-form label {
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #ccc;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Register form input */
+.register-form input[type="text"],
+.register-form input[type="password"] {
+  width: 100%;
+  border: none;
+  border-radius: 25px;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Register form button */
+.register-form button[type="submit"] {
+  width: 100%;
+  border: none;
+  border-radius: 25px;
+  padding: 15px 20px;
+  background: #ff8248;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.register-form button[type="submit"]:hover {
+  background: #ffcab1;
+}
+
+/* Already have account link */
+.register-form a {
+  font-size: 13px;
+  text-decoration: none;
+  color: #999;
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  transition: color 0.2s;
+}
+
+.register-form a:hover {
+  color: #333;
+}
+</style>
+
+    <form class="register-form" action="{% url 'register'%}" method="post">
         {% csrf_token %} 
         <h3>Register Here</h3>
 
@@ -9,16 +86,13 @@
         <input type="text" placeholder="Username" name="username" id="username">
         <br>
         <label for="firstname">FirstName</label>
-        <input type="text" placeholder="firstname" name="firstname" id="firstname">
+        <input type="text" placeholder="firstname" name="first_name" id="firstname">
         <br>
         <label for="lastname">lastname</label>
-        <input type="text" placeholder="lastname" name="lastname" id="lastname">
+        <input type="text" placeholder="lastname" name="last_name" id="lastname">
         <br>
         <label for="email">Email</label>
         <input type="email" placeholder="Email" name="email" id="email">
-        <br>
-        <label for="location">location</label>
-        <input type="text" placeholder="location" name="location" id="location">
         <br>
         <label for="password">Password</label>
         <input type="password" placeholder="Password" id="password" name="password">
