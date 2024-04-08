@@ -1,5 +1,6 @@
 {% extends "base.html"%}
 {%block main_content%}
+{%load static%}
     <form action="{% url 'register'%}" method="post">
         {% csrf_token %} 
         <h3>Register Here</h3>

@@ -30,9 +30,7 @@ def registerpage(request):
             return redirect('register')
         
         # Create the user
-        user = User.objects.create_user(username=username, email=email, password=password,location=location)
-        user.first_name = firstname
-        user.last_name = lastname
+        user = User.objects.create_user(username=username,firstname=firstname,lastname=lastname, email=email, password=password,location=location)
         user.save()
         
         messages.success(request, 'Registration successful. You can now login.')

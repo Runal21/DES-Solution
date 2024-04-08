@@ -21,9 +21,9 @@ from article.views import *
 from feedback.views import *
 from desagent.views import *
 from forumpost.views import *
-
 from django.conf import settings
 from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('',home,name="home"), #Home page
@@ -37,4 +37,4 @@ urlpatterns = [
 
 
     path('admin/', admin.site.urls),
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]

@@ -1,5 +1,6 @@
 {% extends "base.html"%}
 {%block main_content%}
+{%load static%}
 <h4>{{users.username}}'s Profile</h4><hr/>
     <a href="{% url 'logout' %}" class="lgoutbtn">Logout</a>
 {% endblock %}
