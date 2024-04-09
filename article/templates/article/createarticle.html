@@ -1,0 +1,19 @@
+{% extends "index.html"%}
+{%block main_content%}
+{%load static%}
+{%if user.is_staff%}
+<h2>Articles</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="title">Title:</label><br>
+    <input type="text" id="art_title" name="art_title" required><br>
+    <label for="author">Author:</label><br>
+    <input type="text" id="art_author" name="art_author" required><br>
+    <label for="content">Content:</label><br>
+    <textarea id="art_content" name="art_content" wrap="hard" rows="10" cols="50" required></textarea><br>
+    <label for="image">Image:</label><br>
+    <input type="file" id="art_image" name="art_image"><br>
+    <button type="submit">Create Article</button>
+</form>
+{% endif %}
+{% endblock %}

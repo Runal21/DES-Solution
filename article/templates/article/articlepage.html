@@ -1,7 +1,20 @@
 {% extends "index.html"%}
 {%block main_content%}
 {%load static%}
-<div class="container">
-    <h2>Articles</h2>
-    
+<head>
+    <link rel= "stylesheet" type="text/css" href ="/static/article/css/articleview.css"> 
+</head>
+<div class="art_container">
+    <h2>Here it's all about Articles!!!</h2> 
+{%for article in articles%}
+   <p class="art_title">Title:  {{ article.art_title }}</p>
+   <p class="art_author">Author:  {{ article.art_author }}</p>
+   <p class="art_created-at">Created at :{{ article.art_created_at }}</p>
+   <img class="art_images"src="{{article.art_image.url}}" height="315" width="650"><br>
+   <b class="art_content">Content:  </B>{{ article.art_content }}<hr>
+{%endfor%}
+   {%if user.is_staff%}
+   <a href="{% url 'addarticlepage' %}">Create New Article</a>  
+   {%endif%}
+</div>
 {% endblock %}
