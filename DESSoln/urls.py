@@ -35,6 +35,17 @@ urlpatterns = [
     path('register/',registerpage,name="register"), #register page
     path('logout/',logoutpage,name="logout"), #login page
 
+    path('article/',articlepage,name="articlepage"),#Article Page
+    path('addarticle/',addarticlepage,name="addarticlepage"),#Article Page
+
+
+    path('forumpost/',forumpost,name="forumpost"),
+
+
+    path('feedback/',feedback,name="feedback"), #Feedback form
+
+
+
 
     path('admin/', admin.site.urls),
 ]

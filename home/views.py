@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from  .models import *
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.models import User
+from home.models import CustomUser
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
@@ -23,6 +24,7 @@ def registerpage(request):
         first_name = request.POST.get('first_name')
         last_name= request.POST.get('last_name')
         email = request.POST.get('email')
+        location =request.POST.get("location")
         password = request.POST.get('password')
         
         # Check if username is already taken
@@ -31,7 +33,8 @@ def registerpage(request):
             return redirect('register')
         
         # Create the user
-        user = User.objects.create_user(username=username,first_name=first_name,last_name=last_name, email=email, password=password)
+        # user = User.objects.create_user(username=username,first_name=first_name,last_name=last_name, email=email,password=password)
+        user = CustomUser.objects.create_user(username=username,first_name=first_name,last_name=last_name, email=email,location=location,password=password)
         user.save()
         
         messages.success(request, 'Registration successful. You can now login.')

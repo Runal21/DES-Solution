@@ -19,15 +19,10 @@
             <a href="{%url 'home'%}">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="{%url 'about'%}">About Us</a>&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="{%url 'contact'%}">Contact Us</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a>Services&nbsp;&nbsp;&nbsp;&nbsp;
-              <div class="dropdown-services">
-              <ul>
-                <li><a href="#">Articles</a></li>
-                <li><a href="#">ForumPost</a></li>
-                <li><a href="#">DesAgent</a></li>
-              </ul>
-            </div>
-          </a>
+            <a href="{%url 'articlepage'%}">Article</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{%url 'forumpost'%}">Forumpost</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{%url 'feedback'%}">Feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;
+
             {% if user.is_authenticated %}
                 Welcome Back, {{ user.username }}&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="{% url 'logout' %}">Log Out</a>&nbsp;&nbsp;&nbsp;&nbsp;
