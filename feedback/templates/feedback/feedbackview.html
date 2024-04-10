@@ -1,0 +1,86 @@
+{% extends "index.html"%}
+{%block main_content%}
+{%load static%}
+<style>
+  /* Feedback container */
+  .fb_container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  /* Feedback heading */
+  .fb_container h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Feedback reply */
+  .feedback {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+  
+  /* Feedback content */
+  .fb_content {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+  
+  /* Feedback admin */
+  .fbr_admin {
+    font-size: 0.8rem;
+    color: #333;
+    margin-top: 15px;
+  }
+  
+  /* Feedback reply content */
+  .fbr_reply_content {
+    font-size: 0.8rem;
+    color: #6a6f8c;
+  }
+  
+  /* Feedback timestamp */
+  .fbr_timestamp {
+    font-size: 0.8rem;
+    color: #333;
+  }
+  
+  /* Feedback reply border */
+  .feedback hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 15px 0;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 600px) {
+   .fb_container h1 {
+      font-size: 1.5rem;
+    }
+  
+   .feedback,
+   .fb_content,
+   .fbr_admin,
+   .fbr_reply_content,
+   .fbr_timestamp {
+      font-size: 0.8rem;
+    }
+  }
+</style>
+<div class="fb_container">
+<h1>Feedback</h1>
+{%for fbreply in fbreplys%}
+<p class="feedback">Feedback username and email : {{ fbreply.feedback.fb_uname }} | {{ fbreply.feedback.fb_email }}</p>
+<p class="fb_content">Feedback : {{ fbreply.feedback.fb_content }}</p>
+<p class="fbr_admin">Replied By :  {{ fbreply.fbr_admin }} | Replied was :  {{ fbreply.fbr_reply_content }}</p>
+<p class="fbr_timestamp"> Fb_Reply TimeStamp : {{ fbreply.fbr_timestamp }}</p><hr>
+{%empty%}
+  <p>No replies yet.</p>
+{%endfor%}
+{%endblock main_content%}
+
+

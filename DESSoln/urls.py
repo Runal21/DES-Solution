@@ -42,7 +42,10 @@ urlpatterns = [
     path('forumpost/',forumpost,name="forumpost"),
 
 
-    path('feedback/',feedback,name="feedback"), #Feedback form
+    path('feedback/',feedbackview,name="feedbackview"), #Feedback view to specs user
+    path('feedbackform/',feedbackform,name="feedbackform"), #Feedback form
+    path('feedback_confirmation/',feedback_confirmation,name="feedback_confirmation"), #Feedback feedback_confirmation
+    path('submit_admin_reply/',submit_admin_reply,name="submit_admin_reply"), #Feedback feedback_confirmation
 
 
 

@@ -16,23 +16,26 @@
           <img src="/static/home/dessoln.png" alt="Logo of India Waste Management" />
         </div>
         <div class="nav-links">
-            <a href="{%url 'home'%}">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="{%url 'about'%}">About Us</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="{%url 'contact'%}">Contact Us</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="{%url 'articlepage'%}">Article</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="{%url 'forumpost'%}">Forumpost</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="{%url 'feedback'%}">Feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;
-
+            <a href="{%url 'home'%}">Home</a>&nbsp;&nbsp;
+            <a href="{%url 'about'%}">About Us</a>&nbsp;&nbsp;
+            <a href="{%url 'contact'%}">Contact Us</a>&nbsp;&nbsp;
+            <a href="{%url 'articlepage'%}">Article</a>&nbsp;&nbsp;
+            <a href="{%url 'forumpost'%}">Forumpost</a>&nbsp;&nbsp;
+            <a href="{%url 'feedbackform'%}">Feedback</a>&nbsp;&nbsp;
+            {% if user.is_authenticated and not user.is_staff %}
+            <a href="{%url 'feedbackview'%}"> Reply to Feedback</a>&nbsp;&nbsp;
+            {%endif%} 
             {% if user.is_authenticated %}
-                Welcome Back, {{ user.username }}&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'logout' %}">Log Out</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                Welcome Back, {{ user.username }}&nbsp;&nbsp;
+                <a href="{% url 'logout' %}">Log Out</a>&nbsp;&nbsp;
             {% else %}
-                <a href="{% url 'login' %}">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'register' %}">Register</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'login' %}">Login</a>&nbsp;&nbsp;
+                <a href="{% url 'register' %}">Register</a>&nbsp;&nbsp;
             {% endif %}
         </div>
       </div>
     </header>
+   
     {%block main_content%}
     {%endblock %}
     <footer class="footer">

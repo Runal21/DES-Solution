@@ -1,0 +1,93 @@
+{% extends "index.html"%}
+{%block main_content%}
+{%load static%}
+<style>
+    /* Feedback form container */
+    /* Feedback form container */
+    .feedbackform_content {
+      width: 100%;
+      max-width: 525px;
+      min-height: 670px;
+      position: relative;
+      padding: 90px 70px 50px 70px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.1), 0 17px 50px 0 rgba(0, 0, 0, 0.1);
+      margin: 0 auto; /* Add this line to center the form */
+    }
+    
+    /* Feedback form label */
+    .feedbackform_content label {
+        font-size: 15px;
+        text-transform: uppercase;
+        color: #333; /* Change this color to the desired color */
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    /* Feedback form input */
+    .feedbackform_content input[type="text"],
+    .feedbackform_content textarea {
+      width: 100%;
+      border: none;
+      border-radius: 25px;
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #333;
+      margin-bottom: 15px;
+    }
+    
+    /* Feedback form button */
+    .feedbackform_content button[type="submit"] {
+      width: 100%;
+      border: none;
+      border-radius: 25px;
+      padding: 15px 20px;
+      background: #ff8248;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .feedbackform_content button[type="submit"]:hover {
+      background: #ffcab1;
+    }
+    
+    /* Feedback form link */
+    .feedbackform_content a {
+      font-size: 13px;
+      text-decoration: none;
+      color: #999;
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      transition: color 0.2s;
+    }
+    
+    .feedbackform_content a:hover {
+      color: #333;
+    }
+</style>
+{% if user.is_authenticated and not user.is_staff %}
+<form method="POST" enctype="multipart/form-data" class="feedbackform_content">
+    {% csrf_token %}
+    <label for="fb_uname ">UserName : </label><br>
+    <input type="text" id="fb_uname" name="fb_uname"><br><br>
+
+    <label for="fb_email">Email : </label><br>
+    <input type="text" id="fb_email" name="fb_email"><br><br>
+
+    <label for="fb_content">Content:</label><br>
+    <textarea id="content" name="fb_content" rows="10" cols="50"></textarea><br><br>
+
+    <button type="submit">Submit Feedback</button>
+</form>
+<a href="{% url 'feedbackview'%}">{{user.username}} feedback</a>
+{%endif%}
+{%if user.is_staff%}
+<a href="{% url 'submit_admin_reply'%}">Reply to feedback</a>
+{%endif%}
+{% endblock %}

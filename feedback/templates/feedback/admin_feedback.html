@@ -1,0 +1,13 @@
+{% extends "index.html"%}
+{%block main_content%}
+{%load static%}
+<div class="fb_admin_reply">
+<h1>Admin Reply</h1>
+   <form method= "POST" action = "{% url 'submit_admin_reply'%}">
+    {% csrf_token %}
+    <label for="fbr_reply_content">Reply Content:</label><br>
+    <textarea id="fbr_reply_content" name="fbr_reply_content" rows="4" cols="50"></textarea><br>
+    <input type="submit" value="Submit Reply">
+   </form>
+</div>
+{%endblock main_content%}
