@@ -85,11 +85,6 @@ WSGI_APPLICATION = 'DESSoln.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db name',
-        'USER': 'postgresusername',
-        'PASSWORD': 'postgresql pass',
-        'HOST': 'localhost',
-        'PORT': 'see setings of db , it will contain 4 digits number like 5465',
     }
 }
 
