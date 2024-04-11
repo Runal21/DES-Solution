@@ -42,6 +42,10 @@ urlpatterns = [
     path('forumpost/',forumpost,name="forumpost"),
 
 
+    path('desagent-chatbot', chatbot, name='chatbot'),
+
+
+
     path('feedback/',feedbackview,name="feedbackview"), #Feedback view to specs user
     path('feedbackform/',feedbackform,name="feedbackform"), #Feedback form
     path('feedback_confirmation/',feedback_confirmation,name="feedback_confirmation"), #Feedback feedback_confirmation

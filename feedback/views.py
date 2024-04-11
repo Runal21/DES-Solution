@@ -3,13 +3,12 @@ from .models import Feedback,FeedbackReply
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-
 # Create your views here.
 @login_required(login_url='/login')
 
 def feedbackview(request):
-    fbreplys = FeedbackReply.objects.all()       
-    return render(request,'feedback/feedbackview.html',{'fbreplys':fbreplys})
+    fbreplys = FeedbackReply.objects.filter()
+    return render(request, 'feedback/feedbackview.html', {'fbreplys': fbreplys})
 
 @login_required(login_url='/login')
 def feedbackform(request):
@@ -37,5 +36,3 @@ def submit_admin_reply(request,fb_uname):
         feedback_reply.save()
         return redirect('feedbackview', fb_uname=fb_uname)
     return render(request, 'feedback/admin_reply_form.html')
-
-

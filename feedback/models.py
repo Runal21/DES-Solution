@@ -19,3 +19,4 @@ class FeedbackReply(models.Model):
 
     def __str__(self):
         return f"Reply to feedback: {self.feedback.id} by {self.fbr_admin} to {self.feedback.fb_uname}"
+    
