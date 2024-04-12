@@ -1,76 +1,87 @@
 {% extends 'index.html' %}
 {% block main_content %}
 <style>
-    .messages-box {
-      flex: 1;
-      overflow-y: auto;
-    }
+    /* Style for the chat container */
+.chat-container {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+}
 
-    .messages-list {
-      padding-left: 0;
-    }
+/* Style for the chat messages */
+.messages-list {
+  list-style-type: none;
+  padding: 0;
+}
 
-    .message {
-      margin-bottom: 15px;
-      list-style: none;
-    }
+.message {
+  margin-bottom: 10px;
+}
 
-    .message-text {
-      padding: 10px;
-      border-radius: 5px;
-    }
+.message-text {
+  padding: 10px;
+  border-radius: 8px;
+}
 
-    .sent {
-      background-color: #dcf8c6;
-      align-self: flex-end;
-    }
+.sent .message-text {
+  background-color: #007bff;
+  color: white;
+  align-self: flex-end;
+}
 
-    .received {
-      background-color: #f1f0f0;
-      align-self: flex-start;
-    }
+.received .message-text {
+  background-color: #e5e5ea;
+  color: #333;
+}
 
-    .message-form {
-      display: flex;
-      position: absoulte;        
-      top:2;
-    }
+.message-sender {
+  font-weight: bold;
+}
 
-    .message-input {
-      flex: 1;
-      bottom:1;
-      
-    }
+/* Style for the message input field */
+.message-form {
+  margin-top: 20px;
+}
 
-    .btn-send {
-      border-radius: 0;
-    }
+.input-group {
+  display: flex;
+  width: 100%;
+}
 
-    .chat-container {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
+.message-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.btn-send {
+  border-radius: 8px;
+}
+
 </style>
 <div class="chat-container">
-    <div class="card flex-grow-1">
-      <div class="card-header bg-primary text-white">Chat</div>
+    <div>
+      <div >Chat</div>
       {% if user.is_authenticated %}
-      <div class="card-header bg-primary text-white"><b>Welcome, {{user.username}}</b>   <a style="color: yellow;" href="logout">Logout</a></div>
+      <div ><b>Welcome, {{user.username}}</b>   <a style="color: red;" href="logout">Logout</a></div>
       {% else %}
-      <div class="card-header bg-primary text-white"><a style="color: yellow" href="login">Login</a>   <a style="color: yellow;" href="register">Register</a></div>
+      <div<a style="color: red" href="login">Login</a>   <a style="color: red;" href="register">Register</a></div>
       {% endif %}
-      <div class="card-body messages-box">
+      <div>
         
         <ul class="list-unstyled messages-list">
           
           <li class="message received">
             <div class="message-text">
               <div class="message-sender">
-                <b>AI Chatbot</b>
+                <b>DES Chatbot</b>
               </div>
               <div class="message-content">
-                Hi {{user.username}}, I am your AI Chatbot, you can ask me anything.
+                Hi {{user.username}}, I am DES Chatbot, you can ask me anything.
               </div>
             </div>
           </li>
@@ -81,7 +92,7 @@
               <li class="message sent">
             <div class="message-text">
               <div class="message-sender">
-                <b>You</b>
+                <b>You {{user.username}}</b>
               </div>
               <div class="message-content">
                 {{chat.cm_message}}
@@ -92,7 +103,7 @@
           <li class="message received">
             <div class="message-text">
               <div class="message-sender">
-                <b>AI Chatbot</b>
+                <b>DES Chatbot</b>
               </div>
               <div class="message-content">
                 {{chat.cm_response}}
@@ -157,8 +168,8 @@
           'cm_message': cm_message
         })
       })
-        .then(cm_response => cm_response.json())
-        .then(data => {
+       .then(cm_response => cm_response.json())
+       .then(data => {
           const cm_response = data.cm_response;
           const messageItem = document.createElement('li');
           messageItem.classList.add('cm_message', 'received');
@@ -176,5 +187,5 @@
         });
     });
   
-  </script>
+  </script> 
 {% endblock %}
