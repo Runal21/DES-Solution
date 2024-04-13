@@ -41,6 +41,24 @@
     font-size: 20px;
     text-align: center;
    }
+   .desagent-homelink {
+    margin-top: 10px;
+  }
+.desagent-homelink a {
+    color: #007bff;
+    text-decoration: none;
+  }
+.desagent-homelink a:hover {
+    color: #0069d9;
+    text-decoration: underline;
+  }
+#chatbot-icon {
+    width: 100px;
+    height: 100px;
+  }
+#chatbot-text {
+    display: none;
+  }
 </style>
 
 <div class="ind-container">
@@ -59,6 +77,14 @@
 </div>
 
 <div class="desagent-homelink">
-    <a href="{%url 'chatbot'%}">DesAgent</a>
+    <a href="{%url 'chatbot'%}" id="chatbot-link">
+        <img src="static/desagent/chatbot.png" alt="Chatbot" id="chatbot-icon" width="100" height="100">
+        <span id="chatbot-text">DesAgent</span>
+    </a>
 </div>
+
+<script>
+    document.getElementById('chatbot-icon').addEventListener('click', function() { 
+    document.getElementById('chatbot-text').style.display = 'inline';});
+</script>
 {% endblock %}

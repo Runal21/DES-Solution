@@ -40,6 +40,9 @@ urlpatterns = [
 
 
     path('forumpost/',forumpost,name="forumpost"),
+    path('post/create/',create_post, name='create_post'),
+    path('post/detail/<int:pk>/',post_detail, name='post_detail'),
+    path('post/<int:pk>/comment/', add_comment, name='add_comment'),
 
 
     path('desagent-chatbot', chatbot, name='chatbot'),

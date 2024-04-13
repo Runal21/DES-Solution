@@ -1,5 +1,57 @@
 {% extends "index.html"%}
 {%block main_content%}
 {%load static%}
- this is forumpost
+<style>
+  /* Style for the heading */
+  .headlist-of-forumpost {
+    font-size: 30px;
+    color: #333; /* Dark gray color */
+    margin-bottom: 20px;
+
+  }
+  
+  /* Style for the post titles */
+  .fp-title {
+    font-size: 18px;
+    color: #007bff; /* Blue color */
+    text-decoration: none; /* Remove underline */
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+
+  }
+  
+  .fp-title:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  
+  /* Style for the post info */
+  .info-small-fp {
+    font-size: 14px;
+    color: #666; /* Gray color */
+    margin-top: 5px;
+  }
+  
+  /* Style for the horizontal rule */
+  hr {
+    border: none;
+    border-top: 1px solid #ccc; /* Light gray color */
+    margin: 10px 0;
+  }
+  
+</style>
+<body>
+  <h1 class="headlist-of-forumpost">Forum Posts</h1>
+  <ul>
+    {% for post in posts %}
+      <li>
+        <a class="fp-title" href="{% url 'post_detail' pk=post.pk%}">{{ post.fp_title }}</a>
+        <p class="info-small-fp">Author: {{ post.fp_author.username }} | Created at: {{ post.fp_created_at }}</p>
+        <hr>
+      </li>
+    {%endfor%}
+  </ul>
+    <a href="{% url 'create_post' %}">Create Post</a>
+</body>
 {% endblock %}
+

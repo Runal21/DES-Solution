@@ -1,0 +1,13 @@
+{% extends "index.html"%}
+{%block main_content%}
+{%load static%}
+<h1>Create Forum Post</h1>
+<form method="post" action="{% url 'create_post'%}" >
+  {% csrf_token %}
+  <label for="fp_title">Title:</label><br>
+  <input type="text" id="fp_title" name="fp_title" required><br>
+  <label for="fp_content">Content:</label><br>
+  <textarea id="fp_content" name="fp_content" required></textarea><br>
+  <button type="submit">Submit</button>
+</form>
+{% endblock %}

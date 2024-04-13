@@ -1,0 +1,33 @@
+{% extends "index.html"%}
+{%block main_content%}
+{%load static%}
+<style>
+  .w {
+    color: blue;
+    text-decoration: none; /* No underline */
+  }
+  .w:hover {
+    color: blue;
+    transition: color 0.3s ease;
+    text-decoration: underline; /* Underline on hover */
+  }
+</style>
+<body>
+  <h1>{{ post.fp_title }}</h1>
+  <p>{{ post.fp_content }}</p>
+  <p>Author: {{ post.fp_author }}</p>
+  <p>Created at: {{ post.fp_created_at }}</p>
+  <h2>Comments...</h2>
+  <ul>
+    {% for comment in post.comment_set.all %}
+      <li>
+        <p>By : {{ comment.cmfp_author.username }} - {{ comment.cmfp_content }}</p>
+        <p>Created at: {{ comment.cmfp_created_at }}</p>
+      </li>
+    {% empty %}
+      <p>No comments yet.</p>
+    {% endfor %}
+    <a href="{% url 'add_comment' pk=post.pk %}">Add Comment</a>
+  </ul>
+</body>
+{% endblock %}
