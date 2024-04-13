@@ -2,7 +2,7 @@
 {%block main_content%}
 {%load static%}
 <h2>Add a Comment</h2>
-<form action="{% url 'add_comment'%}" method="post">
+<form method="post" action="{% url 'add_comment' pk=post.pk %}">
   {% csrf_token %}
   <label for="cmfp_content">Comment:</label><br>
   <textarea id="cmfp_content" name="cmfp_content" rows="4" cols="50"></textarea><br>

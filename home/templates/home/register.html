@@ -2,80 +2,68 @@
 {%block main_content%}
 {%load static%}
 <style>
-    /* Register form */
-.register-form {
-  width: 100%;
-  max-width: 525px;
-  min-height: 670px;
-  position: relative;
-  padding: 90px 70px 50px 70px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 10px;
-  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.1), 0 17px 50px 0 rgba(0, 0, 0, 0.1);
+  .register-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-/* Register form header */
 .register-form h3 {
-  font-size: 22px;
-  margin-bottom: 30px;
-  text-align: center;
-  color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
 }
 
-/* Register form label */
 .register-form label {
-  font-size: 15px;
-  text-transform: uppercase;
-  color:black;
-  display: block;
-  margin-bottom: 5px;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
 }
 
-/* Register form input */
 .register-form input[type="text"],
-.register-form input[type="password"] {
-  width: 100%;
-  border: none;
-  border-radius: 25px;
-  padding: 15px 20px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #333;
-  margin-bottom: 15px;
+.register-form input[type="password"],
+.register-form input[type="email"],
+.register-form input[type="location"]
+ {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
-/* Register form button */
 .register-form button[type="submit"] {
-  width: 100%;
-  border: none;
-  border-radius: 25px;
-  padding: 15px 20px;
-  background: #ff8248;
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .register-form button[type="submit"]:hover {
-  background: #ffcab1;
+    background-color: #0056b3;
 }
 
-/* Already have account link */
 .register-form a {
-  font-size: 13px;
-  text-decoration: none;
-  color: #999;
-  display: block;
-  text-align: center;
-  margin-top: 20px;
-  transition: color 0.2s;
+    display: block;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
 }
 
 .register-form a:hover {
-  color: #333;
+    text-decoration: underline;
 }
+
 </style>
 
     <form class="register-form" action="{% url 'register'%}" method="post">

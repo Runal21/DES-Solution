@@ -2,74 +2,60 @@
 {%block main_content%}
 {%load static%}
 <style>
-    /* Feedback form container */
-    /* Feedback form container */
-    .feedbackform_content {
-      width: 100%;
-      max-width: 525px;
-      min-height: 670px;
-      position: relative;
-      padding: 90px 70px 50px 70px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 10px;
-      box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.1), 0 17px 50px 0 rgba(0, 0, 0, 0.1);
-      margin: 0 auto; /* Add this line to center the form */
-    }
-    
-    /* Feedback form label */
-    .feedbackform_content label {
-        font-size: 15px;
-        text-transform: uppercase;
-        color: #333; /* Change this color to the desired color */
-        display: block;
-        margin-bottom: 5px;
-    }
-    
-    /* Feedback form input */
-    .feedbackform_content input[type="text"],
-    .feedbackform_content textarea {
-      width: 100%;
-      border: none;
-      border-radius: 25px;
-      padding: 15px 20px;
-      background: rgba(255, 255, 255, 0.1);
-      color: #333;
-      margin-bottom: 15px;
-    }
-    
-    /* Feedback form button */
-    .feedbackform_content button[type="submit"] {
-      width: 100%;
-      border: none;
-      border-radius: 25px;
-      padding: 15px 20px;
-      background: #ff8248;
-      color: #fff;
-      text-transform: uppercase;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    
-    .feedbackform_content button[type="submit"]:hover {
-      background: #ffcab1;
-    }
-    
-    /* Feedback form link */
-    .feedbackform_content a {
-      font-size: 13px;
-      text-decoration: none;
-      color: #999;
-      display: block;
-      text-align: center;
-      margin-top: 20px;
-      transition: color 0.2s;
-    }
-    
-    .feedbackform_content a:hover {
-      color: #333;
-    }
+  .feedbackform_content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.feedbackform_content label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.feedbackform_content input[type="text"],
+.feedbackform_content textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.feedbackform_content textarea {
+    resize: vertical;
+}
+
+.feedbackform_content button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.feedbackform_content button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.feedbackform_content a {
+    display: block;
+    margin-top: 15px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.feedbackform_content a:hover {
+    text-decoration: underline;
+}
+
 </style>
 {% if user.is_authenticated and not user.is_staff %}
 <form method="POST" enctype="multipart/form-data" class="feedbackform_content">

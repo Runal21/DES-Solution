@@ -2,89 +2,76 @@
 {%block main_content%}
 {%load static%}
 <style>
+  /* General Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-   *{
-    position: relative;
-    align: center;
-    margin: 0;
-    padding: 0;
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
 
-    box-sizing: border-box;
-   }
-   .home-title{
-    font-size: 30px;
-    text-align: center;
-    margin: 2% 3% 2% 3%;
-   }
-   .ind-wmimg{
-    height: 325px!important;
-    width: 560px;
-   }
-   .subtitle-sing{
-    font-size: 29px;
-    font-weight: bold;
-    text-align: center;
-    margin: 2% 3% 2% 3%;
+/* Container Styles */
+.ind-container,
+.sing-container {
+  margin-bottom: 2rem;
+}
 
-   }
-   .subtitle-ind{
-    font-size: 29px;
-    font-weight: bold;
-    text-align: center;
-    margin: 2% 3% 2% 3%;
-   }
-   .india-lesson{
-    font-size: 20px;
-    text-align: center;
-   }
-   .singapore-lesson{
-    font-size: 20px;
-    text-align: center;
-   }
-   .desagent-homelink {
-    margin-top: 10px;
-  }
-.desagent-homelink a {
-    color: #007bff;
-    text-decoration: none;
-  }
-.desagent-homelink a:hover {
-    color: #0069d9;
-    text-decoration: underline;
-  }
-#chatbot-icon {
-    width: 100px;
-    height: 100px;
-  }
-#chatbot-text {
-    display: none;
-  }
+/* Title Styles */
+.home-title,
+.subtitle-ind,
+.subtitle-sing {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Subtitle Styles */
+.subtitle-ind,
+.subtitle-sing {
+  color: #333;
+}
+
+/* Video Styles */
+iframe {
+  width: 100%;
+  height: 515px; /* Adjust as needed */
+  margin-bottom: 1rem;
+}
+
+/* Image Styles */
+.ind-wmimg {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+/* Lesson Styles */
+.india-lesson,
+.singapore-lesson {
+  margin-bottom: 1rem;
+}
 </style>
-
 <div class="ind-container">
-    <h2 class="home-title">Welcome to DES Solutions</h2><hr>
-    <b><p class="subtitle-ind">India's website for how it manage waste and recycled it</P></b><br>
-    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/tZEM5K72aVs?si=pKvdX8RM2YvjV86i" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br><br><br>
-    <img class="ind-wmimg" src="/static/home/indwm.jpg" alt="India Des Solution Image" height="660" width="325"><br><br>
-    <p  class="india-lesson">here are the lesson learned from our journey in managing waste in India</P><br><hr>
+  <h2 class="home-title">Welcome to DES Solutions</h2>
+  <hr>
+  <p class="subtitle-ind"><strong>India's website for waste management and recycling</strong></p>
+  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/tZEM5K72aVs?si=pKvdX8RM2YvjV86i" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <img class="ind-wmimg" src="/static/home/indwm.jpg" alt="India Des Solution Image" height="660" width="325">
+  <p class="india-lesson">Here are the lessons learned from our journey in managing waste in India</p>
+  <hr>
 </div>
 
 <div class="sing-container">
-    <b><p class="subtitle-sing">Singapore's website for how it manage waste and recycled it</P></b><br>
-    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/r-q5V6LDxEY?si=ZObHusF8pmTvdyw8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br><br><br>
-    <img class="ind-wmimg" src="/static/home/swm.png" alt="Singapore Des Solution Image" height="660" width="325"><br><br>
-    <p class="singapore-lesson">here are the lesson  learned from our journey in managing waste in Singapore</P><br><br><br>
+  <p class="subtitle-sing"><strong>Singapore's website for waste management and recycling</strong></p>
+  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/r-q5V6LDxEY?si=ZObHusF8pmTvdyw8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <img class="ind-wmimg" src="/static/home/swm.png" alt="Singapore Des Solution Image" height="660" width="325">
+  <p class="singapore-lesson">Here are the lessons learned from our journey in managing waste in Singapore</p>
 </div>
 
-<div class="desagent-homelink">
-    <a href="{%url 'chatbot'%}" id="chatbot-link">
-        <img src="static/desagent/chatbot.png" alt="Chatbot" id="chatbot-icon" width="100" height="100">
-        <span id="chatbot-text">DesAgent</span>
-    </a>
-</div>
 
-<script>
-    document.getElementById('chatbot-icon').addEventListener('click', function() { 
-    document.getElementById('chatbot-text').style.display = 'inline';});
-</script>
 {% endblock %}

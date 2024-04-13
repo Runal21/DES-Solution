@@ -2,94 +2,76 @@
 {%block main_content%}
 {%load static%}
 <style>
-    /* Login form */
-    .login-form {
-      width:80%;
-      max-width: 525px;
-      min-height: 500px;
-      position: relative;
-      padding: 90px 70px 50px 70px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 10px;
-      box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.1), 0 17px 50px 0 rgba(0, 0, 0, 0.1);
-    }
-    
-    /* Login form header */
-    .login-form h3 {
-      font-size: 22px;
-      margin-bottom: 30px;
-      text-align: center;
-      color: #333;
-    }
-    
-    /* Login form label */
-    .login-form label {
-      font-size: 15px;
-      text-transform: uppercase;
-      color: black;
-      display: block;
-      margin-bottom: 5px;
-    }
-    
-    /* Login form input */
-    .login-form input[type="text"],
-    .login-form input[type="password"] {
-      width: 100%;
-      border: none;
-      border-radius: 25px;
-      padding: 15px 20px;
-      background: rgba(255, 255, 255, 0.1);
-      color: #333;
-      margin-bottom: 15px;
-    }
-    
-    /* Login form button */
-    .login-form button[type="submit"] {
-      width: 100%;
-      border: none;
-      border-radius: 25px;
-      padding: 15px 20px;
-      background: #ff8248;
-      color: #fff;
-      text-transform: uppercase;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    
-    .login-form button[type="submit"]:hover {
-      background: #ffcab1;
-    }
-    
-    /* Create account link */
-    .login-form a {
-      font-size: 13px;
-      text-decoration: none;
-      color: #999;
-      display: block;
-      text-align: center;
-      margin-top: 20px;
-      transition: color 0.2s;
-    }
-    
-    .login-form a:hover {
-      color: #333;
-    }
+  .login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
 
+.login-form h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.login-form button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.login-form a {
+    display: block;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-form a:hover {
+    text-decoration: underline;
+}
 </style>
 
-    <form class="login-form" method="post">
-        <h3>Login Here</h3>
-        {% csrf_token %} 
-        <label for="username">Username</label>
-        <input type="text" placeholder="Enter Username" id="username" name="username">
-        <br>
-        <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password" name="password">
-        <br>
-        <button type="submit">Log In</button>
-
-        <a href="{% url 'register' %}" >Create a account</a>
-    </form>
+<form class="login-form" method="post">
+  <h3>Login Here</h3>
+  {% csrf_token %} 
+  <label for="username">Username</label>
+  <input type="text" placeholder="Enter Username" id="username" name="username">
+  <br>
+  <label for="password">Password</label>
+  <input type="password" placeholder="Password" id="password" name="password">
+  <br>
+  <button type="submit">Log In</button>
+  <a href="{% url 'register' %}" >Create a account</a>
+</form>
 {% endblock %}

@@ -1,19 +1,79 @@
 {% extends "index.html"%}
 {%block main_content%}
 {%load static%}
+<style>
+    .createart-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .createart-container h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+        text-align: center;
+    }
+    
+    .createart-container form {
+        text-align: left;
+    }
+    
+    .createart-container label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #555;
+    }
+    
+    .createart-container input[type="text"],
+    .createart-container textarea {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        resize: vertical; /* Allow vertical resizing */
+        white-space: pre-wrap; /* Preserve spaces and line breaks */
+    }
+
+    .createart-container input[type="file"] {
+        margin-bottom: 20px;
+    }
+    
+    .createart-container button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .createart-container button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>    
 {%if user.is_staff%}
+<div class= "createart-container">
 <h2>Articles</h2>
-<form method="post" enctype="multipart/form-data">
+<form method="post" action="{%url 'addarticlepage'%}" enctype="multipart/form-data">
     {% csrf_token %}
-    <label for="title">Title:</label><br>
+    <label >Title:</label><br>
     <input type="text" id="art_title" name="art_title" required><br>
-    <label for="author">Author:</label><br>
+    <label >Author:</label><br>
     <input type="text" id="art_author" name="art_author" required><br>
-    <label for="content">Content:</label><br>
+    <label>Content:</label><br>
     <textarea id="art_content" name="art_content" wrap="hard" rows="10" cols="50" required></textarea><br>
-    <label for="image">Image:</label><br>
+    <label>Image:</label><br>
     <input type="file" id="art_image" name="art_image"><br>
     <button type="submit">Create Article</button>
 </form>
 {% endif %}
+</div>
 {% endblock %}

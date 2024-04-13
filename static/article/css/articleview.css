@@ -1,67 +1,47 @@
-/* Container */
 .art_container {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    font-style:arial;
-  }
-  
-/* Heading */
- h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  
-  /* Image */
-.art_images{
-  width:fit-content;
-  height: fit-content
+  max-width: 800px;
   margin: 0 auto;
-  border: 1px solid #ccc;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  padding: 20px;
 }
 
-.art_title{
+.art_container h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
   text-align: center;
-  font-size: 2rem;
+}
+
+.art_container p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.art_container img {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.art_container b {
   font-weight: bold;
+  color: #333;
 }
 
-.art_created-at{
-  text-shadow: 0cqw;
-  font-weight:bold;   
+.art_container hr {
+  border-top: 1px solid #ccc;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-  /* Content */
-.art_content {
-  /* width: 100%;
-  max-width: 525px;
-  min-height: 670px;
-  position: relative;
-  padding: 90px 70px 50px 70px; */
-  width: 100%;
-  height: 220px; /* Adjust the height as needed */
-  padding: 10px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  white-space:pre;
-  border-radius: 5px;
-  resize: vertical;
+.art_container a {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #007bff;
+  text-decoration: none;
 }
 
-  /* Author */
-.art_author {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #0e0e0e;
-  margin-top: 15px;
-}
-  
-/* Created at */
-.created-at {
-  font-size: 0.8rem;
-  color: #6a6f8c;
+.art_container a:hover {
+  text-decoration: underline;
 }

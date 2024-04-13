@@ -7,8 +7,16 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/login')
 
 def feedbackview(request):
-    fbreplys = FeedbackReply.objects.filter()
-    return render(request, 'feedback/feedbackview.html', {'fbreplys': fbreplys})
+    feedbacks = Feedback.objects.all()
+    feedback_with_replies = []
+    for feedback in feedbacks:
+        # Get all replies for the current feedback
+        replies = FeedbackReply.objects.filter(feedback=feedback)
+        feedback_with_replies.append((feedback, replies))
+    return render(request, 'feedback/feedbackview.html', {'feedback_with_replies': feedback_with_replies})
+
+    # fbreplys = FeedbackReply.objects.filter()
+    # return render(request, 'feedback/feedbackview.html', {'fbreplys': fbreplys})
 
 @login_required(login_url='/login')
 def feedbackform(request):

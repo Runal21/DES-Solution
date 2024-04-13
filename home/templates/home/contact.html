@@ -1,27 +1,42 @@
 {% extends "index.html"%}
 {%block main_content%}
 {%load static%}
-  <title>Contact Us</title>
+<title>Contact Us</title>
 <style>
-    h1 {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-      }
-  
-      p {
-        margin-bottom: 1rem;
-      }
-  
-      a {
-        color: #007bff;
-        text-decoration: none;
-      }
-  
-      a:hover {
-        text-decoration: underline;
-      }
+  .ccontact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.ccontact-container h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.ccontact-container p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.ccontact-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.ccontact-container a:hover {
+    text-decoration: underline;
+}
+
 </style>
-  <div class="container">
+  <div class="ccontact-container">
     <h1>Contact Us</h1>
     <p>We would love to hear from you! Please use the following information to get in touch with us:</p>
     <p>Email: <a href="mailto:rubhosale21@gmail.com">System  Administrator</a></p>

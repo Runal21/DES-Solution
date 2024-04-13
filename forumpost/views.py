@@ -4,8 +4,6 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import ForumPost, Comment
 
-
-
 def forumpost(request):
     posts = ForumPost.objects.all()
     return render(request, 'forumpost/forumpost.html', {'posts': posts})
@@ -27,12 +25,27 @@ def post_detail(request,pk):
     comments = post.comment_set.all()
     return render(request, 'forumpost/fp_detail.html', {'post': post, 'comments': comments})
 
+# @login_required
+# def add_comment(request,pk):
+#     if request.method == 'POST':
+#         post = get_object_or_404(ForumPost,pk=pk)
+#         cmfp_content = request.POST.get('cmfp_content')
+#         comments = Comment.objects.create(cmfp_content=cmfp_content,post=post, cmfp_author=request.user)
+#         comments.save()
+#         return redirect('post_detail',pk=pk)
+#     return render(request, 'forumpost/add_comment.html', {'post': post})
+
+
+
 @login_required
-def add_comment(request,pk):
+
+@login_required
+def add_comment(request, pk):
+    post = get_object_or_404(ForumPost, pk=pk)
+
     if request.method == 'POST':
-        post = get_object_or_404(ForumPost,pk=pk)
         cmfp_content = request.POST.get('cmfp_content')
-        comments = Comment.objects.create(cmfp_content=cmfp_content,post=post, cmfp_author=request.user)
-        comments.save()
-        return redirect('post_detail',pk=pk)
-    return render(request, 'forumpost/add_comment.html', {'post': post})
+        comments = Comment.objects.create(cmfp_content=cmfp_content, post=post, cmfp_author=request.user)
+        return redirect('post_detail', pk=pk)
+    else:
+        return render(request, 'forumpost/add_comment.html', {'post': post})                                       
