@@ -140,7 +140,7 @@
   align-items: center;
   flex-direction: column;
   max-width: 1200px; /* Adjusted */
-  margin: 0 auto; /* Added */
+  margin: auto; /* Added */
 }
 .social-icon,
 .menu {

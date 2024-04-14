@@ -4,8 +4,7 @@ from .models import Article
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 
-@login_required
-
+@login_required(login_url='/login')
 def addarticlepage(request):
     if request.method == 'POST':
         art_title = request.POST.get('art_title')
@@ -20,6 +19,7 @@ def addarticlepage(request):
     return render(request, 'article/createarticle.html')
 
 
+@login_required(login_url='/login')
 def articlepage(request):
     articles = Article.objects.all()
     return render(request, 'article/articlepage.html', {'articles': articles})

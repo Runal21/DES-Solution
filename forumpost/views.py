@@ -4,12 +4,13 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import ForumPost, Comment
 
+@login_required(login_url='/login')
 def forumpost(request):
     posts = ForumPost.objects.all()
     return render(request, 'forumpost/forumpost.html', {'posts': posts})
 
 
-@login_required
+@login_required(login_url='/login')
 def create_post(request):
     if request.method == 'POST':
         fp_title = request.POST.get('fp_title')
@@ -20,6 +21,7 @@ def create_post(request):
             # return redirect('post_detail', pk=forum_post.pk)
     return render(request, 'forumpost/create_fp.html')
 
+@login_required(login_url='/login')
 def post_detail(request,pk):
     post = get_object_or_404(ForumPost,pk=pk)
     comments = post.comment_set.all()

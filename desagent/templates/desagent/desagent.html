@@ -76,7 +76,7 @@
 </style>
 <div class="chat-container">
     <div>
-      <div >Chat</div>
+      <div>Chat</div>
       {% if user.is_authenticated %}
       <div ><b>Welcome, {{user.username}}</b>   <a style="color: red;" href="logout">Logout</a></div>
       {% else %}
@@ -85,7 +85,6 @@
       <div>
         
         <ul class="list-unstyled messages-list">
-          
           <li class="message received">
             <div class="message-text">
               <div class="message-sender">
@@ -100,7 +99,7 @@
           {% for chat in chats %}
             {% if chat.cm_user == request.user %}
   
-              <li class="message sent">
+          <li class="message sent">
             <div class="message-text">
               <div class="message-sender">
                 <b>You {{user.username}}</b>
@@ -141,9 +140,8 @@
         </div>
       </div>
     </form>
-  </div>
-  
-  <script>
+</div>
+<script>
     const messagesList = document.querySelector('.messages-list');
     const messageForm = document.querySelector('.message-form');
     const messageInput = document.querySelector('.message-input');
@@ -198,5 +196,5 @@
         });
     });
   
-  </script> 
+</script> 
 {% endblock %}

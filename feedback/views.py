@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse , redirect
 from .models import Feedback,FeedbackReply
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -24,9 +25,12 @@ def feedbackform(request):
         fb_uname = request.POST.get('fb_uname')
         fb_email = request.POST.get('fb_email')
         fb_content= request.POST.get('fb_content')
-        feedbackform = Feedback.objects.create(fb_uname=fb_uname,fb_email=fb_email, fb_content= fb_content)
-        feedbackform.save()
-        return redirect('feedback_confirmation')
+        if fb_uname == request.user and fb_email == request.user.email:
+            feedbackform = Feedback.objects.create(fb_uname=fb_uname,fb_email=fb_email, fb_content= fb_content)
+            feedbackform.save()
+            return redirect('feedback_confirmation')
+        else:
+            messages.error(request,"Invalid input")
     return render(request,'feedback/feedbackform.html')
 
 def feedback_confirmation(request):

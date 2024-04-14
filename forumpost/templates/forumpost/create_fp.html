@@ -1,7 +1,46 @@
 {% extends "index.html"%}
 {%block main_content%}
 {%load static%}
-<h1>Create Forum Post</h1>
+<style>
+  .forum-post-form {
+    width: 60%;
+    margin: 0 auto;
+  }
+  
+  .forum-post-form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .forum-post-form input[type="text"],
+  .forum-post-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .forum-post-form textarea {
+    height: 200px; /* Adjust the height as needed */
+  }
+  
+  .forum-post-form button {
+    padding: 10px 20px;
+    background-color: #007bff; /* Change the color as needed */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .forum-post-form button:hover {
+    background-color: #0056b3; /* Change the hover color as needed */
+  }
+  
+</style>
+<h1 class="forum-post-heading">Create Forum Post</h1>
 <form method="post" action="{% url 'create_post'%}" >
   {% csrf_token %}
   <label for="fp_title">Title:</label><br>

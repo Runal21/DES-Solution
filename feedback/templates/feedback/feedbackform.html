@@ -61,13 +61,13 @@
 <form method="POST" enctype="multipart/form-data" class="feedbackform_content">
     {% csrf_token %}
     <label for="fb_uname ">UserName : </label><br>
-    <input type="text" id="fb_uname" name="fb_uname"><br><br>
+    <input type="text" id="fb_uname" name="fb_uname" required><br><br>
 
     <label for="fb_email">Email : </label><br>
-    <input type="text" id="fb_email" name="fb_email"><br><br>
+    <input type="text" id="fb_email" name="fb_email"required><br><br>
 
     <label for="fb_content">Content:</label><br>
-    <textarea id="content" name="fb_content" rows="10" cols="50"></textarea><br><br>
+    <textarea id="content" name="fb_content" rows="10" cols="50" required></textarea><br><br>
 
     <button type="submit">Submit Feedback</button>
 </form>

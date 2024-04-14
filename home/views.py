@@ -49,7 +49,10 @@ def loginpage(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
+            messages.success(request,'Welcome Again!!')
             return redirect('home')  # Redirect to home page after successful login
+        else:
+            messages.error(request, 'Username or password is incorrect.')
     return render(request, 'home/login.html')
 
 def logoutpage(request):
