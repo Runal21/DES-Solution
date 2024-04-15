@@ -57,4 +57,4 @@ def loginpage(request):
 
 def logoutpage(request):
     logout(request)
-    return render(request,'home/login.html')
+    return render(request,'home/home.html')

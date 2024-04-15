@@ -1,21 +1,74 @@
 {% extends "index.html"%}
 {%block main_content%}
 {%load static%}
-<head>
-    <link rel= "stylesheet" type="text/css" href ="/static/article/css/articleview.css"> 
-</head>
+<style>
+    /* Styles for article container */
+.art_container {
+    color: #fff; /* Set text color to white for better contrast */
+}
 
+/* Styles for each article */
+.article {
+    margin-bottom: 20px; /* Add space between articles */
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Add border with reduced opacity for better visibility */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.5); /* Set background color with reduced opacity for better visibility */
+}
+
+.article:hover {
+    transform: translateY(-5px);
+}
+
+/* Styles for article details */
+.art_detail {
+    display: none;
+    margin-top: 10px;
+    transition: opacity 0.3s ease;
+}
+
+/* Show details on article click */
+.art_detail.show {
+    display: block;
+    opacity: 1;
+}
+
+</style>
+<body>
+
+<!-- Article container -->
 <div class="art_container">
-    <h2>Here it's all about Articles!!!</h2> 
-{%for article in articles%}
-   <p class="art_title">Title:  {{ article.art_title }}</p>
-   <p class="art_author">Author:  {{ article.art_author }}</p>
-   <p class="art_created-at">Created at :{{ article.art_created_at }}</p>
-   <img class="art_images"src="{{article.art_image.url}}" height="315" width="650"><br>
-   <b class="art_content">Content:  </B>{{ article.art_content }}<hr>
-{%endfor%}
-   {%if user.is_staff%}
-   <a href="{% url 'addarticlepage' %}">Create New Article</a>  
-   {%endif%}
-</div>
+    <!-- Loop through articles -->
+    {% for article in articles %}
+        <div class="article" onclick="toggleDetails(this)">
+            <h3 class="art_title">{{ article.art_title }}</h3>
+            <p class="art_detail art_author">Author: {{ article.art_author }}</p>
+            <p class="art_detail art_created-at">Created at: {{ article.art_created_at }}</p>
+            <img class="art_detail art_images" src="{{ article.art_image.url }}" height="315" width="320"><br>
+            <b class="art_detail art_content">Content:</b> {{ article.art_content }}<hr>
+        </div>
+    {% endfor %}
+    
+    <!-- Display create new article link for staff users -->
+    {% if user.is_staff %}
+        <a href="{% url 'addarticlepage' %}" class="create-article-link">Create New Article</a>
+    {% endif %}
+</div> 
+<script>
+    // Function to toggle article details visibility
+    function toggleDetails(article) {
+        var details = article.querySelectorAll('.art_detail');
+   
+        // Toggle visibility of details
+        details.forEach(function(detail) {
+        detail.classList.toggle('show');
+      });
+    } 
+
+</script>
+</body>
 {% endblock %}
+
+

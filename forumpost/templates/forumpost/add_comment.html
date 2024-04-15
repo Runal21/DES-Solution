@@ -1,11 +1,64 @@
 {% extends "index.html"%}
 {%block main_content%}
 {%load static%}
-<h2>Add a Comment</h2>
-<form method="post" action="{% url 'add_comment' pk=post.pk %}">
-  {% csrf_token %}
-  <label for="cmfp_content">Comment:</label><br>
-  <textarea id="cmfp_content" name="cmfp_content" rows="4" cols="50"></textarea><br>
-  <input type="submit" value="Submit">
-</form>
+<style>
+  /* Form container */
+  .comment-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Form heading */
+  .comment-form-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Form labels */
+  .comment-form-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  /* Form textarea */
+  .comment-form-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+  }
+  
+  /* Form submit button */
+  .comment-form-container input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .comment-form-container input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+</style>
+
+<div class="comment-form-container">
+  <h2>Add a Comment</h2>
+  <form method="post" action="{% url 'add_comment' pk=post.pk %}">
+    {% csrf_token %}
+    <label for="cmfp_content">Comment:</label><br>
+    <textarea id="cmfp_content" name="cmfp_content" rows="4" cols="50"></textarea><br>
+    <input type="submit" value="Submit">
+  </form>
+</div>
 {%endblock%}

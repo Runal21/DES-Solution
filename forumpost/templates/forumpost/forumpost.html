@@ -2,48 +2,97 @@
 {%block main_content%}
 {%load static%}
 <style>
-  /* Style for the heading */
-  .headlist-of-forumpost {
-    font-size: 30px;
-    color: #333; /* Dark gray color */
+  /* General Styles */
+.fp-headpage {
+    font-family: Arial, sans-serif;
+    background-image: url('your-background-image-url.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    color: #333; /* Default text color */
+    position: relative; /* Add position relative */
+}
+
+.fp-headpage .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.fp-headpage .headlist-of-forumpost {
+    font-size: 52px;
     margin-bottom: 20px;
+    color: #fff; /* White text color */
+}
 
-  }
-  
-  /* Style for the post titles */
-  .fp-title {
-    font-size: 18px;
-    color: #007bff; /* Blue color */
-    text-decoration: none; /* Remove underline */
-    background-color: #f1f1f1;
-    padding: 10px;
-    border-radius: 5px;
-
-  }
-  
-  .fp-title:hover {
-    text-decoration: underline; /* Underline on hover */
-  }
-  
-  /* Style for the post info */
-  .info-small-fp {
-    font-size: 14px;
-    color: #666; /* Gray color */
-    margin-top: 5px;
-  }
-  
-  /* Style for the horizontal rule */
-  hr {
+.fp-headpage .create-fp {
+    position: absolute;
+    top: 20px; /* Adjust top position */
+    right: 20px; /* Adjust right position */
+    color: #fff;
+    background-color: #007bff;
     border: none;
-    border-top: 1px solid #ccc; /* Light gray color */
+    border-radius: 4px;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.fp-headpage .create-fp:hover {
+    background-color: #0056b3;  
+}
+
+.fp-headpage .list-of-fp {
+    list-style: none;
+    padding: 0;
+}
+
+.fp-headpage .fp-title {
+    color: #007bff;
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.fp-headpage .fp-title:hover {
+    color: #0056b3;
+}
+
+.fp-headpage .info-small-fp {
+    color: #fff; /* White text color */
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.fp-headpage li {
+    margin-bottom: 20px;
+}
+
+.fp-headpage hr {
+    border: 0;
+    border-top: 1px solid #fff; /* White border color */
     margin: 10px 0;
-  }
-  
+}
+
+/* Animation Styles */
+.fp-headpage .list-item-animate {
+    transition: transform 0.3s ease;
+}
+
+.fp-headpage .list-item-animate.clicked {
+    transform: translateX(20px); /* Adjust as needed */
+}
+
 </style>
 {% if user.is_authenticated%}
 <body>
+<div class="fp-headpage">
   <h1 class="headlist-of-forumpost">Forum Posts</h1>
-  <ul>
+  <a class="create-fp" href="{% url 'create_post' %}">Create Post</a>
+  <ul class="list-of-fp">
     {% for post in posts %}
       <li>
         <a class="fp-title" href="{% url 'post_detail' pk=post.pk%}">{{ post.fp_title }}</a>
@@ -52,8 +101,20 @@
       </li>
     {%endfor%}
   </ul>
-    <a href="{% url 'create_post' %}">Create Post</a>
+</div>
 </body>
+<script>
+  // Get all list items
+const listItems = document.querySelectorAll('.fp-headpage .list-item-animate');
+
+// Add click event listener to each list item
+listItems.forEach(item => {
+    item.addEventListener('click', () => {
+        // Toggle 'clicked' class on click
+        item.classList.toggle('clicked');
+    });
+});
+</script>
 {%endif%}
 {% endblock %}
 

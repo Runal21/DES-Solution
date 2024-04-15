@@ -3,26 +3,42 @@
 {%load static%}
 <style>
   /* General Styles */
-body {
+ body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-}
+ } 
 
-hr {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  border: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
+ hr {
+   margin-top: 1rem;
+   margin-bottom: 1rem;
+   border: 0;
+   border-top: 1px solid rgba(0, 0, 0, 0.1);
+ }
 
-/* Container Styles */
-.ind-container,
-.sing-container {
-  margin-bottom: 2rem;
-}
+ /* Container Styles */
+ .ind-container,
+ .sing-container {
+   margin-bottom: 2rem;
+ }
 
-/* Title Styles */
+ /* Title Styles */
+ .home-title{
+   text-transform: uppercase;
+   background: linear-gradient(135deg, white 60%, cyan);
+   text-align :center;
+   background-clip: border-box;
+   background-size: 200% auto;
+   color: #fff;
+   background-clip: text;
+   text-fill-color: transparent;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   animation: textclip 2s linear infinite;
+   display: inline-block;
+   font-size: 45px;
+ }
+
 .home-title,
 .subtitle-ind,
 .subtitle-sing {
@@ -33,45 +49,235 @@ hr {
 /* Subtitle Styles */
 .subtitle-ind,
 .subtitle-sing {
-  color: #333;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.subtitle-ind,.subtitle-sing {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333; /* Change color as needed */
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
 }
 
-/* Video Styles */
-iframe {
-  width: 100%;
-  height: 515px; /* Adjust as needed */
-  margin-bottom: 1rem;
+.subtitle-ind,.subtitle-sing strong {
+  color:white; /* Change color as needed */
+}
+/* Style for the container */
+.ind-video-container,
+.sing-video-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  opacity: 0.7;
+  border-color: #8A3324;
+  transition: opacity 0.3s ease; /* Add transition for smooth effect */
 }
 
-/* Image Styles */
-.ind-wmimg {
-  width: 100%;
-  height: auto;
-  margin-bottom: 1rem;
+/* Change opacity on hover */
+.ind-video-container:hover, .sing-video-container:hover {
+    opacity: 1;
+    color:#8A3324;
+
+}
+/* Style for each video link */
+.video-link {
+    position: relative;
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.video-link p {
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+    color: #333;
+}
+
+/* Video popup container */
+.video-popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.video-popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .ind-video-container, .sing-video-container {
+        padding: 10px;
+    }
+
+    .video-link {
+        width: calc(50% - 20px);
+    }
 }
 
 /* Lesson Styles */
 .india-lesson,
-.singapore-lesson {
+.singapore-lesson{
   margin-bottom: 1rem;
+  text-align:center;
+  font-size: 2.5rem;
+  line-height: 1.5;
+  font-weight: 100;
+  color: white;
+  font-style: oblique;
+  font-family: "EB Garamond"
+}
+
+.lessons-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  opacity: 0.9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.lessons-container h2 {
+  text-align: center;
+  color: #333;
+}
+
+.lessons-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.lessons-container ul li {
+  margin-bottom: 15px;
+}
+
+.lessons-container ul li strong {
+  font-weight: bold;
 }
 </style>
 <div class="ind-container">
   <h2 class="home-title">Welcome to DES Solutions</h2>
   <hr>
   <p class="subtitle-ind"><strong>India's website for waste management and recycling</strong></p>
-  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/tZEM5K72aVs?si=pKvdX8RM2YvjV86i" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <img class="ind-wmimg" src="/static/home/indwm.jpg" alt="India Des Solution Image" height="660" width="325">
-  <p class="india-lesson">Here are the lessons learned from our journey in managing waste in India</p>
+  
+  <!-- Video -->
+  <div class="ind-video-container">
+    <!-- Video link 1 -->
+    <div class="video-link" onclick="openVideo('https://www.youtube.com/embed/KHiHBuubsDE?si=H9h8B_bgk4NVHqAw')">
+      <p>How People Live On A Flaming Garbage Dump</p>
+    </div>
+    <!-- Video link 2 -->
+    <div class="video-link" onclick="openVideo('https://www.youtube.com/embed/LZ2giAaHNYU?si=H4kDlRIlDZbvYznb')">
+      <p>Bangalore: India's Silicon Valley is drowning in trash </p>
+    </div>
+    <!-- Video link 3 -->
+    <div class="video-link" onclick="openVideo('https://www.youtube.com/embed/tZEM5K72aVs?si=uQWLchBY0Pq8A_oN')">
+      <p>Inside the solution to India's waste problem</p>
+    </div>
+  </div>
+  
+  <div class="lessons-container">
+    <h2 class="india-lesson">Lessons Learned from Our Waste Management Journey in India</h2>
+    <ul>
+      <li><strong>Community Awareness:</strong> Engaging the community and raising awareness about waste management practices is crucial for success.</li>
+      <li><strong>Stakeholder Participation:</strong> Involving stakeholders such as residents, businesses, and local authorities fosters collaboration and sustainability.</li>
+      <li><strong>Effective Segregation:</strong> Proper segregation of waste at the source is essential to facilitate recycling and reduce landfill waste.</li>
+      <li><strong>Resource Recovery:</strong> Establishing resource recovery parks and composting facilities helps in recycling organic waste and reducing environmental impact.</li>
+      <li><strong>Upcycling and Innovation:</strong> Exploring innovative ways to upcycle waste materials into new products promotes sustainability and circular economy principles.</li>
+      <li><strong>Replication and Scalability:</strong> Successful waste management models can be replicated and scaled up to other regions, contributing to broader environmental conservation efforts.</li>
+    </ul>
+  </div>
   <hr>
 </div>
 
 <div class="sing-container">
   <p class="subtitle-sing"><strong>Singapore's website for waste management and recycling</strong></p>
-  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/r-q5V6LDxEY?si=ZObHusF8pmTvdyw8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <img class="ind-wmimg" src="/static/home/swm.png" alt="Singapore Des Solution Image" height="660" width="325">
-  <p class="singapore-lesson">Here are the lessons learned from our journey in managing waste in Singapore</p>
+  <div class="sing-video-container">
+    <!-- Video link 1 -->
+      <!-- Video -->
+    <div class="video-link" onclick="openVideo('https://www.youtube-nocookie.com/embed/r-q5V6LDxEY?si=ZObHusF8pmTvdyw8')">
+      <p>How Singapore fixed its big trash problem</p>
+    </div>
+    <!-- Video link 2 -->
+    <div class="video-link" onclick="openVideo('https://www.youtube.com/embed/1nicf4RjU00?si=q8aHPidBShbzJxmP')">
+      <p>How Singapore Handles Six Million Pounds of Trash Daily</p>
+    </div>
+    <!-- Video link 3 -->
+    <div class="video-link" onclick="openVideo('https://www.youtube.com/embed/jrOq9aAuW0M?si=mjpUBCXY3MIg20Ij')">
+      <p>How Singapore is tackling its huge garbage problem</p>
+    </div>
+  </div>
+
+  <!-- Video popup container -->
+  <div id="video-popup" class="video-popup">
+    <div class="video-popup-content">
+      <span class="close-button" onclick="closeVideo()">×</span>
+      <iframe id="video-player" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="lessons-container">
+    <h2 class="singapore-lesson">Lessons Learned from Our Waste Management Journey in Singapore</h2>
+    <ul>
+      <li><strong>Integrated Approach:</strong> Adopting an integrated approach combining legislation, education, and infrastructure development is key to successful waste management.</li>
+      <li><strong>Public Education:</strong> Educating the public about the importance of reducing, reusing, and recycling waste promotes sustainable behavior and reduces waste generation.</li>
+      <li><strong>Advanced Technologies:</strong> Investing in advanced technologies such as waste-to-energy plants and recycling facilities enhances waste processing efficiency and minimizes environmental impact.</li>
+      <li><strong>Circular Economy:</strong> Embracing the principles of a circular economy encourages resource conservation, product reuse, and material recycling, leading to sustainable waste management practices.</li>
+      <li><strong>Collaborative Partnerships:</strong> Collaborating with stakeholders including government agencies, private sector, and civil society organizations fosters innovation and enables holistic waste management solutions.</li>
+      <li><strong>Data-driven Decision Making:</strong> Utilizing data analytics and monitoring systems helps in identifying trends, optimizing waste collection routes, and improving overall waste management effectiveness.</li>
+    </ul>
+  </div>
+  
 </div>
+<script>
+  // Function to change opacity of the clicked container
+  function changeOpacity(container) {
+  container.style.opacity = '0.7'; // Set opacity to 0.7
+   }
 
+  // Function to open video popup
+   function openVideo(videoSrc) {
+  var videoPlayer = document.getElementById("video-player");
+  videoPlayer.src = videoSrc;
+  document.getElementById("video-popup").style.display = "flex";
+   }
 
+  // Function to close video popup
+   function closeVideo() {
+  document.getElementById("video-popup").style.display = "none";
+  var videoPlayer = document.getElementById("video-player");
+  videoPlayer.src = ""; // Reset video source to stop playback
+     }
+</script>
 {% endblock %}

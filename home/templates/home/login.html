@@ -1,11 +1,13 @@
-{% extends "index.html"%}
-{%block main_content%}
+{% comment %} {% extends "index.html"%} {% endcomment %}
+{% comment %} {%block main_content%} {% endcomment %}
 {%load static%}
 <style>
   .login-form {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
+    margin-top: 10rem;
+    align-items:center;
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -60,6 +62,15 @@
 .login-form a:hover {
     text-decoration: underline;
 }
+body{
+    background-image: url('https://wallpapercave.com/wp/wp8401150.jpg');
+    opacity: 0.9;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:100%;
+    position:fixed;
+    height:100%;
+}
 </style>
 
 <form class="login-form" method="post">
@@ -75,4 +86,4 @@
   <a href="{% url 'register' %}" >Create a account</a>
 </form>
 
-{% endblock %}
+{% comment %} {% endblock %} {% endcomment %}

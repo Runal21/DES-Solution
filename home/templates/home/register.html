@@ -1,11 +1,21 @@
-{% extends "index.html"%}
-{%block main_content%}
+{% comment %} {% extends "index.html"%}
+{%block main_content%} {% endcomment %}
 {%load static%}
 <style>
-  .register-form {
+body{
+    background-image: url('https://wallpapercave.com/wp/wp8401150.jpg');
+    background-repeat: no-repeat;
+    opacity: 0.9;
+    background-size: cover;
+    width:100%;
+    height:10%;
+}
+.register-form {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
+    margin-top: 1rem;
+    align-items:center;
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -82,7 +92,6 @@
         <label for="email">Email</label>
         <input type="email" placeholder="Email" name="email" id="email">
         <br>
-        <br>
         <label for="location">Location</label>
         <input type="location" placeholder="location" name="location" id="location">
         <label for="password">Password</label>
@@ -92,4 +101,4 @@
         
         <a href="{% url 'login' %}" >I have already account</a>
     </form>
-{% endblock %}
+{% comment %} {% endblock %} {% endcomment %}
