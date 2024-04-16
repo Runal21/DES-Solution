@@ -58,3 +58,6 @@ def loginpage(request):
 def logoutpage(request):
     logout(request)
     return render(request,'home/home.html')
+
+def open_powerbi(request):
+    return render(request,"home/powerbi.html")

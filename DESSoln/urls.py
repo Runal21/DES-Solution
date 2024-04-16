@@ -44,7 +44,7 @@ urlpatterns = [
     path('post/detail/<int:pk>/',post_detail, name='post_detail'),
     path('post/<int:pk>/comment/', add_comment, name='add_comment'),
 
-
+    path('pdfpowerbi/',open_powerbi,name="open_powerbi"),
     path('desagent-chatbot', chatbot, name='chatbot'),
 
 
