@@ -24,14 +24,20 @@ def feedbackform(request):
     if request.method == 'POST':
         fb_uname = request.POST.get('fb_uname')
         fb_email = request.POST.get('fb_email')
-        fb_content= request.POST.get('fb_content')
-        if fb_uname == request.user and fb_email == request.user.email:
-            feedbackform = Feedback.objects.create(fb_uname=fb_uname,fb_email=fb_email, fb_content= fb_content)
-            feedbackform.save()
-            return redirect('feedback_confirmation')
+        fb_content = request.POST.get('fb_content')
+
+        # Check if the username and email match the authenticated user
+        if fb_uname == request.user.username and fb_email == request.user.email:
+            # Form validation
+            if fb_uname.strip() and fb_email.strip() and fb_content.strip():
+                feedbackform = Feedback.objects.create(fb_uname=fb_uname, fb_email=fb_email, fb_content=fb_content)
+                feedbackform.save()
+                return redirect('feedback_confirmation')
+            else:
+                messages.error(request, "Please fill in all fields")
         else:
-            messages.error(request,"Invalid input")
-    return render(request,'feedback/feedbackform.html')
+            messages.error(request, "Invalid username or email")
+    return render(request, 'feedback/feedbackform.html')
 
 def feedback_confirmation(request):
     return render(request, 'feedback/feedback_confirmation.html')

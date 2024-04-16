@@ -3,74 +3,94 @@
 <style>
   /* Chat Container */
 .chat-container {
-  max-width: 600px;
+  font-family: Arial, sans-serif;
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  border: 2px solid #007bff; /* Border color */
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0, 123, 255, 0.2); /* Shadow color */
-  background-color: #fff; /* Background color */
+  background-color: #f8f9fa; /* Light gray background */
+  border-radius: 10px;
 }
 
-/* Message Form */
-.message-form {
-  margin-top: 20px;
+/* Chat Header */
+.chat-container > div > div:first-child {
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
-.message-input {
-  width: calc(100% - 80px);
-  padding: 10px;
-  border: 2px solid #007bff; /* Border color */
-  border-radius: 5px;
+/* User Authentication Section */
+.chat-container > div > div:nth-child(2) {
+  margin-bottom: 20px;
 }
 
-.btn-send {
-  width: 80px;
-  padding: 10px;
-  border: none;
-  background-color: #007bff; /* Button color */
-  color: #fff;
-  border-radius: 5px;
-  cursor: pointer;
+.chat-container > div > div:nth-child(2) > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-container > div > div:nth-child(2) a {
+  color: red;
+  text-decoration: none;
 }
 
 /* Messages List */
 .messages-list {
-  list-style-type: none;
-  margin: 0;
+  list-style: none;
   padding: 0;
+  margin-bottom: 20px;
 }
 
 .message {
   margin-bottom: 10px;
 }
 
+/* Message Content */
 .message-text {
-  display: flex;
-}
-
-.message-sender {
-  width: 100px;
-  text-align: right;
-  color: #007bff; /* Sender color */
-}
-
-.message-content {
-  flex: 1;
   padding: 10px;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  color: #333; /* Text color */
+  border-radius: 10px;
 }
 
-.message.sent .message-content {
-  background-color: #007bff; /* Sent message color */
-  color: #fff;
+/* Chatbot Message */
+.message.received .message-text {
+  background-color: lightblue; /* Light blue background for chatbot messages */
 }
 
-.message.received .message-content {
-  background-color: #d9edf7; /* Received message color */
-  color: #333;
+/* User Message */
+.message.sent .message-text .user-message-content{
+  background-color: lightgreen; /* Light green background for user messages */
+  color: #ffffff; /* White text color for user messages */
+}
+
+/* Message Sender */
+.message-sender {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Message Input */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.message-input {
+  width: calc(100% - 70px); /* Adjust width based on button width */
+  border-radius: 20px;
+  padding: 10px;
+  border: 1px solid #ced4da; /* Gray border */
+}
+
+.btn-send {
+  width: 60px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #007bff; /* Blue background color for button */
+  color: #ffffff; /* White text color for button */
+  border: none;
+  cursor: pointer;
+}
+
+.btn-send:hover {
+  background-color: #0056b3; /* Darker blue hover color */
 }
 
 </style>
@@ -101,10 +121,10 @@
   
           <li class="message sent">
             <div class="message-text">
-              <div class="message-sender">
+              <div class="user-message-sender">
                 <b>You {{user.username}}</b>
               </div>
-              <div class="message-content">
+              <div class="user-message-content">
                 {{chat.cm_message}}
               </div>
             </div>
@@ -112,10 +132,10 @@
   
           <li class="message received">
             <div class="message-text">
-              <div class="message-sender">
+              <div class="chatbot-message-sender">
                 <b>DES Chatbot</b>
               </div>
-              <div class="message-content">
+              <div class="chatbot-message-content">
                 {{chat.cm_response}}
               </div>
             </div>
@@ -185,7 +205,7 @@
           messageItem.innerHTML = `
           <div class="message-text">
               <div class="message-sender">
-                <b>AI Chatbot</b>
+                <b>DES Chatbot</b>
               </div>
               <div class="message-content">
                   ${cm_response}

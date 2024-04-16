@@ -2,57 +2,65 @@
 {%block main_content%}
 {%load static%}
 <style>
-  .feedbackform_content {
-    max-width: 600px;
+    /* Feedback Form Styles */
+.feedbackform_content {
+    max-width: 500px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
     background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.fb-form-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
 }
 
 .feedbackform_content label {
-    display: block;
-    margin-bottom: 5px;
     font-weight: bold;
 }
 
 .feedbackform_content input[type="text"],
 .feedbackform_content textarea {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
+    padding: 10px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-radius: 4px;
     box-sizing: border-box;
 }
 
 .feedbackform_content textarea {
-    resize: vertical;
+    height: 150px;
 }
 
 .feedbackform_content button[type="submit"] {
-    padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 3px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .feedbackform_content button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-.feedbackform_content a {
+/* Feedback Link Styles */
+.feedback-link {
     display: block;
-    margin-top: 15px;
+    margin-top: 20px;
+    font-size: 16px;
     color: #007bff;
     text-decoration: none;
 }
 
-.feedbackform_content a:hover {
+.feedback-link:hover {
     text-decoration: underline;
 }
 
@@ -60,6 +68,7 @@
 {% if user.is_authenticated and not user.is_staff %}
 <form method="POST" enctype="multipart/form-data" class="feedbackform_content">
     {% csrf_token %}
+    <h2 class="fb-form-title">Feedback Form</h2>
     <label for="fb_uname ">UserName : </label><br>
     <input type="text" id="fb_uname" name="fb_uname" required><br><br>
 

@@ -2,28 +2,35 @@
 {%block main_content%}
 {%load static%}
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        padding: 20px;
+    .fb-Submitted {
         text-align: center;
+        margin-top: 50px;
+        padding: 50px;
+        border-radius: 10px;
+        color: #E3DAC9;
+    }    
+    
+    .fb-01 {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
     }
     
-    h1 {
-        color: #333;
-        font-size: 28px;
-        margin-bottom: 10px;
-    }
-    
-    p {
-        color: #666;
+    .fb-Submitted p {
         font-size: 18px;
-        margin-top: 0;
+        color: white;
+        line-height: 1;
+        padding:17px;
+    }
+.fb-Submitted p:last-child {
+        margin-bottom: 0;
     }
 </style>    
-<h1>Feedback</h1>
 <body>
-    <h1>Feedback Submitted Successfully!</h1>
+<div class="fb-Submitted">
+    <h1 class="fb-01">Feedback</h1>
+    <p>Feedback Submitted Successfully!</p>
     <p>Thank you for your feedback.</p>
+</div>
 </body>
 {%endblock main_content%}

@@ -2,6 +2,45 @@
 {%block main_content%}
 {%load static%}
 <style>
+  .forum-post-heading{
+    color:white;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  form{
+    margin: 0 auto;
+    width:20%;
+    background-color: #fff;
+    border-radius: 8px;
+    opacity: 0.9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: black;
+    font-style: oblique;
+    font-family: "EB Garamond"; 
+  }
+  input[type=text], textarea{ 
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f8f8f8;
+    resize: none;
+  }
+  button[type=submit], button[type=reset]{
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    margin: 8px 0;
+
+  }
 </style>
 <body>
 <h1 class="forum-post-heading">Create Forum Post</h1>
