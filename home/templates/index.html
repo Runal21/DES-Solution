@@ -134,6 +134,7 @@
   transition: transform 0.3s ease-in-out;
   width: 100px;
   height: auto;
+  background-color: #E3DAC9;
   border-radius: 50%; /* Rounded border for the icon */
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
@@ -156,7 +157,7 @@
             <a href="{%url 'contact'%}">Contact Us</a>&nbsp;&nbsp;
             <a href="{%url 'articlepage'%}">Article</a>&nbsp;&nbsp;
             <a href="{%url 'forumpost'%}">Forumpost</a>&nbsp;&nbsp;
-            {% if user.is_authenticated%}
+            {% if user.is_authenticated and not user.is_staff %}
               <a href="{%url 'feedbackform'%}">Feedback</a>&nbsp;&nbsp;
             {%endif%}
             {% if user.is_authenticated and  user.is_staff %}

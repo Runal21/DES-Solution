@@ -80,9 +80,5 @@
 
     <button type="submit">Submit Feedback</button>
 </form>
-<a href="{% url 'feedbackview'%}">{{user.username}} feedback</a>
-{%endif%}
-{%if user.is_staff%}
-<a href="{% url 'submit_admin_reply'%}">Reply to feedback</a>
 {%endif%}
 {% endblock %}

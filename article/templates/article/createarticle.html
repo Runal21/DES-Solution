@@ -2,8 +2,9 @@
 {%block main_content%}
 {%load static%}
 <style>
+    /* Container styles */
     .createart-container {
-        width: 80%;
+        width: 46%;
         margin: 0 auto;
         padding: 20px;
         background-color: #f9f9f9;
@@ -11,17 +12,20 @@
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
     
+    /* Heading styles */
     .createart-container h2 {
         font-size: 24px;
-        margin-bottom: 20px;
+        margin: 0 0 20px;
         color: #333;
         text-align: center;
     }
     
+    /* Form styles */
     .createart-container form {
-        text-align: center;
+        text-align: left;
     }
     
+    /* Label styles */
     .createart-container label {
         display: block;
         margin-bottom: 8px;
@@ -29,6 +33,7 @@
         color: #555;
     }
     
+    /* Input styles */
     .createart-container input[type="text"],
     .createart-container textarea {
         padding: 10px;
@@ -38,14 +43,17 @@
         box-sizing: border-box;
         resize: vertical; /* Allow vertical resizing */
         white-space: pre-wrap; /* Preserve spaces and line breaks */
+        width: calc(100% - 22px); /* Adjust for border width */
     }
 
+    /* File input styles */
     .createart-container input[type="file"] {
         margin-bottom: 20px;
     }
     
+    /* Submit button styles */
     .createart-container button[type="submit"] {
-        width: 100%;
+        width: calc(100% - 22px); /* Adjust for border width */
         padding: 10px;
         background-color: #007bff;
         color: #fff;
@@ -55,10 +63,12 @@
         transition: background-color 0.3s;
     }
     
+    /* Hover effect for submit button */
     .createart-container button[type="submit"]:hover {
         background-color: #0056b3;
     }
-</style>    
+</style>
+  
 {%if user.is_staff%}
 <div class= "createart-container">
 <h2>Articles</h2>
