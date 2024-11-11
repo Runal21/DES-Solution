@@ -1,2 +1,0 @@
-# clgproject
-only project works
